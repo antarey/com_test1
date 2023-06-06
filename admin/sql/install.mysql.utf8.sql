@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS `#__test1` (
+        `id` INT(11) NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8mb4_unicode_ci',
+        `alias` VARCHAR(400) NOT NULL DEFAULT '' COLLATE 'utf8mb4_bin',
+        `checked_out_time` DATETIME NULL DEFAULT NULL,
+        `checked_out` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+        `params` TEXT NOT NULL COLLATE 'utf8mb4_unicode_ci',
+        `ordering` INT(11) NOT NULL DEFAULT '0',
+        `language` CHAR(7) NOT NULL DEFAULT '*' COLLATE 'utf8mb4_unicode_ci',
+        `publish_down` DATETIME NULL DEFAULT NULL,
+        `publish_up` DATETIME NULL DEFAULT NULL,
+        `published` TINYINT(1) NOT NULL DEFAULT '0',
+        `state` TINYINT(3) NOT NULL DEFAULT '0',
+        `catid` INT(11) NOT NULL DEFAULT '0',
+        `access` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+        `featured` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if foo is featured.',
+        `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        `created_by` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+        `created_by_alias` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8mb4_unicode_ci',
+        `modified` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        `modified_by` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+        PRIMARY KEY (`id`),
+        INDEX `idx_access` (`access`),
+        INDEX `idx_catid` (`catid`),
+        INDEX `idx_state` (`published`),
+        INDEX `idx_language` (`language`),
+        INDEX `idx_checkout` (`checked_out`),
+        INDEX `idx_featured_catid` (`featured`, `catid`),
+        INDEX `idx_createdby` (`created_by`),
+        INDEX `idx_alias` (`alias`(191))
+)COLLATE='utf8mb4_unicode_ci';
+
+INSERT INTO `#__test1` (`alias`,`language`, `publish_up`, `published`, `state`, `name`,`access`,`modified`,`modified_by`,`created`,`created_by`,`params`) VALUES
+(CONCAT('cat-',(SELECT FLOOR(RAND()*(100-5+1)+5))), '*', CURRENT_TIMESTAMP(), 1, 0, 'Cat',1,CURRENT_TIMESTAMP(),{USER_ID},CURRENT_TIMESTAMP(),{USER_ID},'{}'),
+(CONCAT('dog-',(SELECT FLOOR(RAND()*(100-5+1)+5))),  '*', CURRENT_TIMESTAMP(),  1, 0,  'Dog',1,CURRENT_TIMESTAMP(),{USER_ID},CURRENT_TIMESTAMP(),{USER_ID},'{}'),
+(CONCAT('dolphin-',(SELECT FLOOR(RAND()*(100-5+1)+5))), '*', CURRENT_TIMESTAMP(),  1, 0, 'Dolphin',1,CURRENT_TIMESTAMP(),{USER_ID},CURRENT_TIMESTAMP(),{USER_ID},'{}'),
+(CONCAT('lemur-',(SELECT FLOOR(RAND()*(100-5+1)+5))), '*', CURRENT_TIMESTAMP(),  1, 0, 'Lemur',1,CURRENT_TIMESTAMP(),{USER_ID},CURRENT_TIMESTAMP(),{USER_ID},'{}'),
+(CONCAT('elephant-',(SELECT FLOOR(RAND()*(100-5+1)+5))), '*', CURRENT_TIMESTAMP(),  1, 0, 'Elephant',1,CURRENT_TIMESTAMP(),{USER_ID},CURRENT_TIMESTAMP(),{USER_ID},'{}');

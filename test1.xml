@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<extension type="component" method="upgrade">
+	<name>COM_TEST1</name>
+	<creationDate>06.06.2023</creationDate>
+	<author>user</author>
+	<authorEmail>users@gmail.com</authorEmail>
+	<authorUrl>site.co</authorUrl>
+	<copyright>Copyright (c)2012-2023 . All rights reserved.</copyright>
+	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<version>1</version>
+	<description>COM_TEST1_XML_DESCRIPTION</description>
+	<namespace path="src">User\Component\Test1</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+	<sql>
+		<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+	</sql>
+</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="site">
+		<folder>language</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<folder>forms</folder>
+	</files>
+	<media folder="media" destination="com_test1">
+		<filename>index.html</filename>
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+		<filename>joomla.asset.json</filename>
+	</media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu img="class:comment">
+			COM_TEST1
+			<params>
+				<dashboard>test1</dashboard>
+			</params>
+		</menu>
+		<submenu>
+				<menu link="option=com_test1&amp;view=test1s" view="test1s" >COM_TEST1_VIEW_TEST1S_DESCRIPTION
+			<params>
+				<menu-quicktask-title>COM_TEST1_VIEW_TEST1S_DESCRIPTION</menu-quicktask-title>
+				<menu-quicktask>index.php?option=com_test1&amp;view=test1&amp;layout=edit</menu-quicktask>
+			</params>
+		</menu>
+			<menu link="option=com_categories&amp;extension=com_test1" view="category" alt="Test1/Categories">COM_TEST1_CATEGORIES</menu>
+			<menu link="option=com_fields&amp;context=com_test1.test1">JGLOBAL_FIELDS</menu>
+			<menu link="option=com_fields&amp;view=groups&amp;context=com_test1.test1">JGLOBAL_FIELD_GROUPS</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>language</folder>
+			<folder>services</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>forms</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<folder>presets</folder>
+		</files>
+	</administration>
+	<dashboards>
+	<dashboard title="COM_TEST1_DASHBOARD_TITLE" icon="icon-file-alt">test1</dashboard>
+</dashboards>
+	<updateservers>
+		<server type="extension" name="Component Name Updates">https://.../update.xml</server>
+	</updateservers>
+	<dlid suffix="" prefix="dlid="/>
+</extension>

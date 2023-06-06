@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<menu
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:joomla.org"
+	xsi:schemaLocation="urn:joomla.org menu.xsd"
+	>
+	<menuitem
+		title="COM_TEST1"
+		type="heading"
+		icon="comment"
+		class="class:file-alt"
+		>
+		<menuitem
+			title="COM_TEST1"
+			type="component"
+			element="com_test1"
+			link="index.php?option=com_test1"
+			quicktask="index.php?option=com_test1&amp;view=test1&amp;layout=edit"
+			quicktask-title="COM_TEST1_MANAGER_SINGLE_NEW"
+		/>
+
+		<menuitem
+			title="JCATEGORY"
+			type="component"
+			element="com_test1"
+			link="index.php?option=com_categories&amp;extension=com_test1"
+			quicktask="index.php?option=com_categories&amp;view=category&amp;layout=edit&amp;extension=com_test1"
+			quicktask-title="JCATEGORY"
+		/>
+
+	</menuitem>
+
+	<menuitem
+			title="COM_TEST1_FIELDS"
+			type="heading"
+			icon="user-tag"
+			class="class:icon-cog"
+	>
+		<menuitem
+				title="COM_FIELDS"
+				type="component"
+				element="com_fields"
+				link="index.php?option=com_fields&amp;view=fields&amp;context=com_test1.test1"
+		/>
+
+		<menuitem
+				title="JGLOBAL_FIELD_GROUPS"
+				type="component"
+				element="com_fields"
+				link="index.php?option=com_fields&amp;view=groups&amp;context=com_test1.test1"
+		/>
+	</menuitem>
+
+</menu>
